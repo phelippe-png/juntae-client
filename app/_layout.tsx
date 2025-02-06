@@ -7,8 +7,8 @@ import { StatusBar } from 'expo-status-bar';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useColorScheme } from '@/hooks/useColorScheme';
 import Home from './index';
-import Login from './login';
-import Register from './register';
+import Login from './auth/login';
+import Register from './auth/register';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -17,11 +17,6 @@ const Stack = createStackNavigator();
 export default function Layout() {
   const colorScheme = useColorScheme();
   const [loaded] = useFonts({
-    Poppins: require('../assets/fonts/Poppins-Regular.ttf'),
-    PoppinsBold: require('../assets/fonts/Poppins-Bold.ttf'),
-    PoppinsMedium: require('../assets/fonts/Poppins-Medium.ttf'),
-    PoppinsSemiBold: require('../assets/fonts/Poppins-SemiBold.ttf'),
-
     Gilroy: require('../assets/fonts/Gilroy-Regular.ttf'),
     GilroyBold: require('../assets/fonts/Gilroy-Bold.ttf'),
     GilroyMedium: require('../assets/fonts/Gilroy-Medium.ttf'),
