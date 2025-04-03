@@ -16,8 +16,6 @@ import { useThemeColor } from '@/hooks/useThemeColor';
 import { FontAwesome5, FontAwesome6, Ionicons } from '@expo/vector-icons';
 
 const TripCreate = ({navigation}) => {
-  const GOOGLE_MAPS_APIKEY = 'AIzaSyCPZ4s7Bxbn_cqEguicMmGzMnjsNmSGp3s';
-
   const background = useThemeColor({light: '#fafafa'}, 'background')
   const backgroundSeparator = useThemeColor({light: '#ccc', dark: '#fafafa'}, 'background')
   const backgroundInput = useThemeColor({light: 'white', dark: '#222223'}, 'background')
