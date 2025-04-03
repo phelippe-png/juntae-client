@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "juntae-client",
-    "slug": "juntae-client",
+    "slug": "juntae",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -15,6 +15,12 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
+      },
+      "package": "com.phelippe.png.juntae",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyCPZ4s7Bxbn_cqEguicMmGzMnjsNmSGp3s"
+        }
       }
     },
     "web": {
@@ -36,6 +42,14 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "c76adda8-6155-4e26-bfdd-15c6b31aa1de"
+      }
     }
   }
 }

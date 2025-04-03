@@ -9,6 +9,9 @@ import { useColorScheme } from '@/hooks/useColorScheme';
 import Home from './index';
 import Login from './auth/login';
 import Register from './auth/register';
+import Menu from './source/menu';
+import { GlobalProvider } from './GlobalProvider';
+import Modal, { ModalProvider } from './components/modal';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -35,14 +38,19 @@ export default function Layout() {
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack.Navigator screenOptions={{
-        animation: 'fade_from_bottom'
-      }}>
-        {/* <Stack.Screen name='Home' component={Home} options={{headerShown: false}}  /> */}
-        <Stack.Screen name='Login' component={Login} options={{headerShown: false}} />
-        <Stack.Screen name='Register' component={Register} options={{headerShown: false}} />
-      </Stack.Navigator>
-      <StatusBar style="auto" />
+      <GlobalProvider>
+        <ModalProvider>
+          <Stack.Navigator screenOptions={{
+            animation: 'fade_from_bottom'
+          }}>
+            {/* <Stack.Screen name='Home' component={Home} options={{headerShown: false}}  /> */}
+            {/* <Stack.Screen name='Login' component={Login} options={{headerShown: false}} /> */}
+            {/* <Stack.Screen name='Register' component={Register} options={{headerShown: false}} /> */}
+            <Stack.Screen name='Menu' component={Menu} options={{headerShown: false}} />
+          </Stack.Navigator>
+          <StatusBar style="auto" />
+        </ModalProvider>
+      </GlobalProvider>
     </ThemeProvider>
   );
 }

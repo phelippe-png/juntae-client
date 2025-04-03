@@ -10,6 +10,7 @@ import { ThemedText } from "./ThemedText";
 export type ThemedViewProps = ViewProps & {
   lightColor?: string;
   darkColor?: string;
+  styleText?: StyleSheet;
 };
 
 export function DateTimePickerApp({ style, styleText, lightColor, darkColor, refDate }: ThemedViewProps) {
@@ -22,10 +23,12 @@ export function DateTimePickerApp({ style, styleText, lightColor, darkColor, ref
   const ShowDatePickerAndroid = (date, refDate) => {
     if (refDate != undefined)
       DateTimePickerAndroid.open({
-        value: moment(date, 'DD/MM/YYYY').toDate(),
+        value: moment((date != undefined && date != '') ? date : moment().format('DD/MM/YYYY'), 'DD/MM/YYYY').toDate(),
         onChange: (event, selectedDate) => {
-          refDate.current = moment(selectedDate).format('DD/MM/YYYY')
-          setForceUpdate(!forceUpdate)
+          if (event.type == 'set') {
+            refDate.current = moment(selectedDate).format('DD/MM/YYYY')
+            setForceUpdate(!forceUpdate)
+          }
         }
       })
   }
@@ -35,9 +38,9 @@ export function DateTimePickerApp({ style, styleText, lightColor, darkColor, ref
       {Platform.OS == 'ios' ? 
         (
           <View>
-            <TouchableOpacity style={[{ backgroundColor }, style]} onPress={() => setDatePickerVisible(true)}>
-              <Text style={[{ color }, styleText]} >{refDate?.current}</Text>
-            </TouchableOpacity>
+            <ThemedButton style={[{ backgroundColor }, style]} onPress={() => setDatePickerVisible(true)}>
+              <ThemedText style={[{ color }, styleText]} >{refDate?.current}</ThemedText>
+            </ThemedButton>
 
             <DateTimePickerModal
               date={moment(refDate?.current, 'DD/MM/YYYY').toDate()}
